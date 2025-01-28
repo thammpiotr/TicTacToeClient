@@ -9,7 +9,6 @@ import { BehaviorSubject } from 'rxjs';
 export class SignalRService {
   private hubConnection: signalR.HubConnection | undefined;
 
-  // Dodaj BehaviorSubject do przechowywania stanu gry
   private gameStateSource = new BehaviorSubject<{
     board: string[][];
     currentTurn: string;
@@ -40,7 +39,6 @@ export class SignalRService {
     console.log('Połączenie SignalR zostało ustanowione.');
   }
 
-  // Metody wywołujące serwer:
   public getRooms(): Promise<string[]> {
     return this.hubConnection!.invoke('GetRooms');
   }
@@ -86,7 +84,6 @@ export class SignalRService {
     this.hubConnection!.on('PlayerJoined', callback);
   }
 
-  // NOWA METODA: rejestracja `SyncGameState`
   private registerOnServerEvents(): void {
     this.hubConnection!.on(
       'SyncGameState',
@@ -109,7 +106,6 @@ export class SignalRService {
       }
     );
   }
-  // src/app/signalr.service.ts
   public getGameState(roomId: string): Promise<{
     board: string[][];
     currentTurn: string;
