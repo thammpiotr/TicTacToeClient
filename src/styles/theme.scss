@@ -1,0 +1,118 @@
+// Light mode
+.light-theme {
+  --primary-bg-color: #ffffff;
+  --secondary-bg-color: #ffffff;
+  --main-content-bg-color: rgba(255, 255, 255, 0.5);
+  --primary-text-color: #1b1c1e;
+  --secondary-text-color: #ffffff;
+  --primary-accent-color: rgb(226, 239, 255);
+  --primary-accent-color-hover: rgb(236, 245, 255);
+  --primary-error-color: #ff7674;
+  --primary-warning-color: #db8f00;
+
+  // Login
+  --login-card-bg-color: rgba(255, 255, 255, 0.64);
+
+  // Button Colors
+  --primary-button-text-color: rgb(86, 86, 86);
+  --primary-func-color: rgb(56, 56, 56);
+  --primary-func-text-color: #ffffff;
+  --func-button-hover: #1a1a1a;
+  --func-button-bg-shadow: #3370a2ee;
+  --secondary-func-color: #ffffff;
+  --basic-button-bg-hover-color: rgb(233, 236, 242);
+  --basic-button-bg: #ffffff;
+  --button-bg-shadow: rgba(0, 0, 0, 0.3);
+  --form-field-bg-color: rgb(255, 255, 255);
+  --form-field-label-bg-color-focused: var(--primary-func-color);
+  --form-field-shadow: rgba(56, 56, 56, 0.1);
+  --form-field-label-text-color-focused: #ffffff;
+  --form-field-calendar-button-active: rgb(240, 240, 240);
+}
+body.light-theme {
+  background: rgb(199, 199, 199);
+  background: -moz-linear-gradient(
+    198deg,
+    rgba(199, 199, 199, 1) 0%,
+    rgba(255, 255, 255, 1) 25%,
+    rgba(255, 255, 255, 1) 75%,
+    rgba(199, 199, 199, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    198deg,
+    rgba(199, 199, 199, 1) 0%,
+    rgba(255, 255, 255, 1) 25%,
+    rgba(255, 255, 255, 1) 75%,
+    rgba(199, 199, 199, 1) 100%
+  );
+  background: linear-gradient(
+    198deg,
+    rgba(199, 199, 199, 1) 0%,
+    rgba(255, 255, 255, 1) 25%,
+    rgba(255, 255, 255, 1) 75%,
+    rgba(199, 199, 199, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c7c7c7",endColorstr="#c7c7c7",GradientType=1);
+}
+
+body.light-theme::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1; /* Pseudo-elementy pod treścią */
+}
+
+body.light-theme::before {
+  filter: blur(10px);
+  background-image: url("../assets/svg/X.svg"), url("../assets/svg/X.svg"),
+    url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+    url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+    url("../assets/svg/O.svg"), url("../assets/svg/O.svg");
+
+  background-size: 250px;
+  background-repeat: no-repeat;
+  background-position: 10% 10%, 30% 60%, 70% 40%, 95% 40%, 35% 5%, 80% 90%,
+    85% 5%, 10% 95%;
+}
+@media (max-width: 1600px) {
+  body.light-theme::before {
+    background-image: url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+      url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+      url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+      url("../assets/svg/X.svg"), url("../assets/svg/O.svg");
+
+    background-size: 200px;
+    background-repeat: no-repeat;
+    background-position: -10% 10%, 30% 60%, 70% 40%, 110% 30%, 35% -5%, 80% 90%,
+      85% 5%, 10% 95%;
+  }
+}
+
+@media (max-width: 1350px) {
+  body.light-theme::before {
+    background-image: url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+      url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+      url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+      url("../assets/svg/X.svg"), url("../assets/svg/O.svg");
+
+    background-size: 150px;
+    background-repeat: no-repeat;
+    background-position: -10% 10%, 30% 60%, 70% 40%, 110% 30%, 35% -5%, 80% 90%,
+      85% 5%, 10% 95%;
+  }
+}
+@media (max-width: 1150px) {
+  body.light-theme::before {
+    background-image: url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+      url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+      url("../assets/svg/O.svg"), url("../assets/svg/X.svg"),
+      url("../assets/svg/X.svg"), url("../assets/svg/O.svg");
+
+    background-size: 125px;
+    background-repeat: no-repeat;
+    background-position: -10% 10%, 30% 60%, 70% 40%, 110% 30%, 35% -5%, 80% 90%,
+      85% 5%, 10% 95%;
+  }
+}

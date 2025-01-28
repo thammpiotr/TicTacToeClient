@@ -1,0 +1,99 @@
+<!-- <div>
+  <button (click)="leaveRoom()">Opuść pokój</button>
+</div>
+
+<hr />
+
+<h3>Pokój: {{ selectedRoomId }}</h3>
+<h4 *ngIf="!isGameOver">Aktualna tura: {{ currentTurn }}</h4>
+<div *ngIf="isGameOver">
+  <h4>Koniec gry!</h4>
+  <button (click)="restartGame()">Rozpocznij nową grę</button>
+</div>
+
+<table style="border-collapse: collapse">
+  <tr *ngFor="let row of [0, 1, 2]; let i = index">
+    <td
+      *ngFor="let col of [0, 1, 2]; let j = index"
+      (click)="makeMove(i, j)"
+      style="
+        width: 60px;
+        height: 60px;
+        border: 1px solid black;
+        text-align: center;
+        font-size: 2em;
+        cursor: pointer;
+      "
+    >
+      {{ board[i][j] }}
+    </td>
+  </tr>
+</table>
+
+<hr />
+<div>
+  <p>{{ message }}</p>
+</div>
+@if(isGameOver) {
+<div>
+  <h4>Koniec gry!</h4>
+  <p>{{ message }}</p>
+  <button (click)="restartGame()">Rozpocznij nową grę</button>
+</div>
+
+} -->
+<div class="flex items-center justify-center h-full w-full">
+  <div
+    class="h-[85vh] w-[90vw] rounded-xl bg-[var(--login-card-bg-color)] p-6 shadow-[0_4px_12px_-1px_rgba(0,0,0,0.15)] backdrop-blur-lg grid grid-rows-[auto_1fr] md:grid-rows-1 md:grid-cols-[10rem_minmax(0,_1fr)_8rem] justify-items-center overflow-auto"
+  >
+    <div class="">
+      <button
+        class="rounded-2xl bg-[var(--primary-func-color)] px-4 py-3 text-xs font-medium text-white hover:bg-[var(--func-button-hover)] tracking-[0.1em]"
+        (click)="leaveRoom()"
+      >
+        OPUŚĆ POKÓJ
+      </button>
+    </div>
+
+    <div class="self-center h-full">
+      <div
+        class="relative h-full flex justify-center items-center flex-col gap-10"
+      >
+        @if(wrongMove()) {
+        <div
+          class="w-[90%] h-12 bg-inherit shadow-[0px_2px_5px_0px_rgba(0,0,0,0.1)] text-center content-center rounded-xl"
+        >
+          <p class="text-red-400 font-bold text-base md:text-lg">
+            Zły ruch lub nie twoja kolej
+          </p>
+        </div>
+        } @else if (isGameOver) {
+        <div
+          class="w-[90%] py-4 bg-inherit shadow-[0px_2px_5px_0px_rgba(0,0,0,0.1)] text-center rounded-xl text-wrap whitespace-normal break-words"
+        >
+          <p
+            class="text-[var(--primary-text-color)] font-normal text-base md:text-lg"
+          >
+            Koniec gry! Wygrał: <span class="font-bold">{{ winner }}</span>
+          </p>
+        </div>
+        } @else {
+        <div class="w-[90%] h-12 text-center content-center rounded-xl">
+          <p class="text-red-400 font-bold text-lg"></p>
+        </div>
+        }
+        <table class="border-separate border-spacing-0">
+          <tr *ngFor="let row of [0, 1, 2]; let i = index">
+            <td
+              *ngFor="let col of [0, 1, 2]; let j = index"
+              (click)="makeMove(i, j)"
+              class="calculated-font-size lg:w-[10vw] lg:h-[10vw] w-24 h-24 border-solid border-[var(--primary-func-color)] cursor-pointer text-center font-bold text-[var(--primary-func-color)]"
+            >
+              {{ board[i][j] }}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

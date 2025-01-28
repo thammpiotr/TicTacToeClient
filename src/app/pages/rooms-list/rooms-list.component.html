@@ -1,0 +1,38 @@
+@if(roomsListLength === 0) {
+<div class="flex items-center justify-center h-full">
+  <h2
+    class="text-[var(--primary-text-color)] text-xl sm:text-3xl md:text-4xl lg:text-6xl font-medium tracking-wider"
+  >
+    Brak dostępnych gier
+  </h2>
+</div>
+} @else {
+<!-- <ul>
+    @for (room of roomsWithCounts; track room.roomId) {
+      <li >
+        Pokój ID: {{ room.roomId }} - Liczba graczy: {{ room.playerCount }}
+        <button (click)="joinRoom(room.roomId)">Dołącz</button>
+      </li>
+    }
+  </ul> -->
+
+<div class="flex items-center justify-center h-full w-full relative">
+  <button
+    (click)="goBack()"
+    class="absolute top-6 left-6 rounded-2xl bg-[var(--primary-func-color)] px-5 py-2 text-xs font-medium text-white hover:bg-[var(--func-button-hover)] tracking-[0.1em]"
+  >
+    WRÓĆ
+  </button>
+  <div
+    class="h-[80vh] w-[80vw] shadow-md bg-[var(--main-content-bg-color)] flex flex-col items-center gap-4 py-4 overflow-auto"
+  >
+    @for (room of roomsWithCounts; track room.roomId) {
+    <app-room-bar
+      class="w-[90%]"
+      [roomId]="room.roomId"
+      [playerCount]="room.playerCount"
+    ></app-room-bar>
+    }
+  </div>
+</div>
+}

@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@use "./styles/theme.scss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Kanit", "Helvetica Neue", sans-serif;
+}
+
+
+
+

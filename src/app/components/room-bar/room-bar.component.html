@@ -1,0 +1,12 @@
+<div
+  class="px-2 w-full bg-[var(--primary-bg-color)] h-44 sm:h-36 lg:h-16 shadow-md grid grid-cols-1 lg:grid-cols-[3fr_1fr_1fr] items-center justify-items-center rounded-md lg:gap-0 gap-4 text-center"
+>
+  <p class="lg:justify-self-start">Pokój nr: {{ roomId() }}</p>
+  <p class="text-base">Ilość graczy: {{ playerCount() }}/2</p>
+  <button
+    (click)="joinRoom(roomId())"
+    class="rounded-2xl bg-[var(--primary-func-color)] px-5 py-2 text-xs font-medium text-white hover:bg-[var(--func-button-hover)] tracking-[0.1em]"
+  >
+    DOŁĄCZ
+  </button>
+</div>

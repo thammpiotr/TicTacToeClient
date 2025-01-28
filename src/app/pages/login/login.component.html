@@ -1,0 +1,35 @@
+<div class="flex items-center justify-center h-full">
+  <div
+    class="h-[20rem] w-[25rem] rounded-xl bg-[var(--login-card-bg-color)] p-6 shadow-[0_4px_12px_-1px_rgba(0,0,0,0.15)] backdrop-blur-lg"
+  >
+    <div class="">
+      <div><h1 class="text-3xl font-medium">Ropocznij rozgrywkę!</h1></div>
+      <div class="mx-auto mt-14 w-4/5">
+        <div class="field mb-6">
+          <input
+            autocomplete="off"
+            id="login"
+            name="login"
+            class="form-input"
+            placeholder=" "
+            [(ngModel)]="playerName"
+            (keyup.enter)="startGame()"
+          /><label for="login">Nazwa</label>
+        </div>
+
+        <div class="mt-14 flex w-full items-center justify-center">
+          <button
+            (click)="startGame()"
+            class="rounded-2xl bg-[var(--primary-func-color)] px-20 py-3 text-lg font-medium text-white hover:bg-[var(--func-button-hover)] tracking-[0.1em]"
+          >
+            ZAGRAJ
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div>-->
+<!--  <label>Twój nick:</label>-->
+<!--  <input [(ngModel)]="playerName" placeholder="Wpisz nick" />-->
+<!--</div>-->
