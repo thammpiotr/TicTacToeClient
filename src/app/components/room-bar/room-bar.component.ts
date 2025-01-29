@@ -14,7 +14,7 @@ export class RoomBarComponent {
   playerName = '';
   constructor(private signalRService: SignalRService, private router: Router) {}
   async ngOnInit() {
-    this.playerName = sessionStorage.getItem('playerName') || 'Anonimowy';
+    this.playerName = localStorage.getItem('playerName') || 'Anonimowy';
     await this.signalRService.startConnection();
   }
 

@@ -13,11 +13,11 @@ export class LoginComponent {
   constructor(private router: Router) {}
   startGame() {
     if (this.playerName.trim()) {
-      sessionStorage.setItem('playerName', this.playerName);
-      let playerId = sessionStorage.getItem('playerId');
+      localStorage.setItem('playerName', this.playerName);
+      let playerId = localStorage.getItem('playerId');
       if (!playerId) {
         playerId = crypto.randomUUID();
-        sessionStorage.setItem('playerId', playerId);
+        localStorage.setItem('playerId', playerId);
       }
       this.router.navigate(['/home']);
     } else {

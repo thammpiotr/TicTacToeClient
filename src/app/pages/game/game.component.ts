@@ -42,7 +42,7 @@ export class GameComponent implements OnInit {
           return;
         }
 
-        this.playerName = sessionStorage.getItem('playerName') || 'Anonimowy';
+        this.playerName = localStorage.getItem('playerName') || 'Anonimowy';
 
         await this.signalRService.startConnection();
 

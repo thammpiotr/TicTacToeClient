@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private signalRService: SignalRService, private router: Router) {}
   ngOnInit() {
-    this.playerName = sessionStorage.getItem('playerName') || 'Anonimowy';
+    this.playerName = localStorage.getItem('playerName') || 'Anonimowy';
   }
 
   async createRoom() {

@@ -18,7 +18,7 @@ export class RoomsListComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      this.playerName = sessionStorage.getItem('playerName') || 'Anonimowy';
+      this.playerName = localStorage.getItem('playerName') || 'Anonimowy';
       await this.signalRService.startConnection();
       this.roomsWithCounts =
         await this.signalRService.getRoomsWithPlayerCounts();

@@ -24,13 +24,13 @@ export class SignalRService {
     ) {
       return;
     }
-    // this.hubConnection = new signalR.HubConnectionBuilder()
-    //   .withUrl('http://localhost:5225/ticTacToeHub')
-    //   .build();
-
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://tictactoe-server-0sgo.onrender.com/ticTacToeHub')
+      .withUrl('http://localhost:5225/ticTacToeHub')
       .build();
+
+    // this.hubConnection = new signalR.HubConnectionBuilder()
+    //   .withUrl('https://tictactoe-server-0sgo.onrender.com/ticTacToeHub')
+    //   .build();
     this.registerOnServerEvents();
     await this.hubConnection.start();
   }
@@ -40,17 +40,17 @@ export class SignalRService {
   }
 
   public createRoom(playerName: string): Promise<string> {
-    const playerId = sessionStorage.getItem('playerId');
+    const playerId = localStorage.getItem('playerId');
     return this.hubConnection!.invoke('CreateRoom', playerName, playerId);
   }
 
   public joinRoom(roomId: string, playerName: string): Promise<boolean> {
-    const playerId = sessionStorage.getItem('playerId');
+    const playerId = localStorage.getItem('playerId');
     return this.hubConnection!.invoke('JoinRoom', roomId, playerName, playerId);
   }
 
   public makeMove(roomId: string, row: number, col: number): Promise<boolean> {
-    const playerId = sessionStorage.getItem('playerId');
+    const playerId = localStorage.getItem('playerId');
     return this.hubConnection!.invoke('MakeMove', roomId, row, col, playerId);
   }
 

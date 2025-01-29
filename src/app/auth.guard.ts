@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean {
-    const playerName = sessionStorage.getItem('playerName');
+    const playerName = localStorage.getItem('playerName');
     if (playerName && playerName.trim()) {
       return true;
     } else {
