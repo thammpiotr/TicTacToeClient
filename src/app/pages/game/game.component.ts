@@ -82,6 +82,11 @@ export class GameComponent implements OnInit {
           this.isGameOver = true;
           this.winner = winner;
         });
+
+        this.signalRService.onRemoveRoomId(() => {
+          localStorage.removeItem('roomId');
+          this.router.navigate(['/home']);
+        });
       });
     } catch (err) {
       console.error('Błąd połączenia z hubem: ', err);

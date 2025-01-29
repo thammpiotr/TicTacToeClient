@@ -34,6 +34,7 @@ export const routes: Routes = [
 
       {
         path: 'game',
+
         loadComponent: () =>
           import('./pages/game/game.component').then((c) => c.GameComponent),
       },

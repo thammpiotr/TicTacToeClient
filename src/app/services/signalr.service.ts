@@ -24,13 +24,13 @@ export class SignalRService {
     ) {
       return;
     }
-    // this.hubConnection = new signalR.HubConnectionBuilder()
-    //   .withUrl('http://localhost:5225/ticTacToeHub')
-    //   .build();
-
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://tictactoe-server-0sgo.onrender.com/ticTacToeHub')
+      .withUrl('http://localhost:5225/ticTacToeHub')
       .build();
+
+    // this.hubConnection = new signalR.HubConnectionBuilder()
+    //   .withUrl('https://tictactoe-server-0sgo.onrender.com/ticTacToeHub')
+    //   .build();
     this.registerOnServerEvents();
     await this.hubConnection.start();
   }
@@ -74,6 +74,9 @@ export class SignalRService {
     callback: (board: string[][], currentTurn: string) => void
   ): void {
     this.hubConnection!.on('BoardUpdated', callback);
+  }
+  public onRemoveRoomId(callback: () => void) {
+    this.hubConnection!.on('RemoveRoomId', callback);
   }
 
   public onPlayerJoined(callback: (playerName: string) => void): void {
