@@ -120,6 +120,7 @@ export class GameComponent implements OnInit {
   }
   async leaveRoom() {
     const result = await this.signalRService.leaveRoom();
+    localStorage.removeItem('roomId');
     this.router.navigate(['/home']);
     if (result) {
       this.selectedRoomId = null;

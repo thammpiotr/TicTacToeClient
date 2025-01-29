@@ -11,14 +11,15 @@ export const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/login/login.component').then((c) => c.LoginComponent),
   },
   {
     path: '',
-    canActivate: [AuthGuard],
     children: [
       {
+        canActivate: [AuthGuard],
         path: 'home',
         loadComponent: () =>
           import('./pages/home/home.component').then((c) => c.HomeComponent),

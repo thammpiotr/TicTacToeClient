@@ -28,9 +28,15 @@ export class HomeComponent implements OnInit {
     try {
       const roomId = await this.signalRService.createRoom(this.playerName);
       this.roomId = roomId;
+      localStorage.setItem('roomId', roomId);
       this.router.navigate(['/game'], { queryParams: { roomId } });
     } catch (err) {
       console.error('Błąd podczas tworzenia pokoju:', err);
     }
+  }
+  logout() {
+    localStorage.removeItem('playerName');
+    localStorage.removeItem('playerId');
+    this.router.navigate(['/login']);
   }
 }

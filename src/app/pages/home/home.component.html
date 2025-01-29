@@ -1,5 +1,11 @@
-<div class="flex justify-center items-center w-full h-full">
-  <div class="h-52 w-[30rem]  flex items-center justify-center gap-6">
+<div class="flex justify-center items-center w-full h-full relative">
+  <button
+    (click)="logout()"
+    class="absolute top-2 left-2 rounded-xl bg-[var(--secondary-func-color)] w-[6rem] h-[2rem] text-sm font-medium text-[var(--primary-text-color)] tracking-[0.1em] box-border border-[2px] border-[var(--primary-func-color)]"
+  >
+    Wyloguj
+  </button>
+  <div class="h-52 w-[30rem] flex items-center justify-center gap-6">
     <button
       routerLink="/rooms"
       class="rounded-2xl bg-[var(--primary-func-color)] w-[10.625rem] h-[3.25rem] text-lg font-medium text-[var(--secondary-text-color)] hover:bg-[var(--func-button-hover)] tracking-[0.1em]"
@@ -7,11 +13,10 @@
       DOŁĄCZ
     </button>
     <button
-    (click)="createRoom()"
-      class="rounded-2xl bg-[var(--secondary-func-color)] w-[10.625rem] h-[3.25rem] text-lg font-medium text-[var(--primary-text-color)]  tracking-[0.1em] box-border border-[2px] border-[var(--primary-func-color)]"
+      (click)="createRoom()"
+      class="rounded-2xl bg-[var(--secondary-func-color)] w-[10.625rem] h-[3.25rem] text-lg font-medium text-[var(--primary-text-color)] tracking-[0.1em] box-border border-[2px] border-[var(--primary-func-color)]"
     >
       NOWY POKÓJ
     </button>
-
   </div>
 </div>
