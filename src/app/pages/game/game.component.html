@@ -1,54 +1,10 @@
-<!-- <div>
-  <button (click)="leaveRoom()">Opuść pokój</button>
-</div>
-
-<hr />
-
-<h3>Pokój: {{ selectedRoomId }}</h3>
-<h4 *ngIf="!isGameOver">Aktualna tura: {{ currentTurn }}</h4>
-<div *ngIf="isGameOver">
-  <h4>Koniec gry!</h4>
-  <button (click)="restartGame()">Rozpocznij nową grę</button>
-</div>
-
-<table style="border-collapse: collapse">
-  <tr *ngFor="let row of [0, 1, 2]; let i = index">
-    <td
-      *ngFor="let col of [0, 1, 2]; let j = index"
-      (click)="makeMove(i, j)"
-      style="
-        width: 60px;
-        height: 60px;
-        border: 1px solid black;
-        text-align: center;
-        font-size: 2em;
-        cursor: pointer;
-      "
-    >
-      {{ board[i][j] }}
-    </td>
-  </tr>
-</table>
-
-<hr />
-<div>
-  <p>{{ message }}</p>
-</div>
-@if(isGameOver) {
-<div>
-  <h4>Koniec gry!</h4>
-  <p>{{ message }}</p>
-  <button (click)="restartGame()">Rozpocznij nową grę</button>
-</div>
-
-} -->
 <div class="flex items-center justify-center h-full w-full">
   <div
-    class="h-[85vh] w-[90vw] rounded-xl bg-[var(--login-card-bg-color)] p-6 shadow-[0_4px_12px_-1px_rgba(0,0,0,0.15)] backdrop-blur-lg grid grid-rows-[auto_1fr] md:grid-rows-1 md:grid-cols-[10rem_minmax(0,_1fr)_8rem] justify-items-center overflow-auto"
+    class="h-[85vh] w-[90vw] rounded-xl bg-[var(--login-card-bg-color)] p-6 shadow-[0_4px_12px_-1px_rgba(0,0,0,0.15)] backdrop-blur-lg grid grid-rows-[auto_1fr] md:grid-rows-1 md:grid-cols-[11rem_minmax(0,_1fr)_11rem] justify-items-center overflow-auto"
   >
     <div class="">
       <button
-        class="rounded-2xl bg-[var(--primary-func-color)] px-4 py-3 text-xs font-medium text-white hover:bg-[var(--func-button-hover)] tracking-[0.1em]"
+        class="rounded-2xl bg-[var(--secondary-func-color)] px-4 py-3 text-xs font-semibold text-[var(--primary-text-color)] tracking-[0.1em] box-border border-[2px] border-[var(--primary-func-color)]"
         (click)="leaveRoom()"
       >
         OPUŚĆ POKÓJ
@@ -95,5 +51,15 @@
         </table>
       </div>
     </div>
+    @if(isGameOver) {
+    <div>
+      <button
+        class="rounded-2xl bg-[var(--primary-func-color)] px-5 py-3 text-xs font-medium text-white hover:bg-[var(--func-button-hover)] tracking-[0.1em]"
+        (click)="restartGame()"
+      >
+        ZAGRAJ PONOWNIE
+      </button>
+    </div>
+    }
   </div>
 </div>

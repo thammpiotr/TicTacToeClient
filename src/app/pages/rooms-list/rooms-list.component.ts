@@ -22,11 +22,8 @@ export class RoomsListComponent implements OnInit {
       await this.signalRService.startConnection();
       this.roomsWithCounts =
         await this.signalRService.getRoomsWithPlayerCounts();
-      console.log(this.roomsWithCounts);
       this.roomsListLength = this.roomsWithCounts.length;
-      // Nasłuchuj aktualizacji listy pokoi
       this.signalRService.onRoomsUpdated((updatedRooms) => {
-        console.log('Zdarzenie RoomsUpdated:', updatedRooms);
         this.roomsWithCounts = updatedRooms;
         this.roomsListLength = this.roomsWithCounts.length;
       });
@@ -42,7 +39,6 @@ export class RoomsListComponent implements OnInit {
         this.playerName
       );
       if (result) {
-        console.log(`Dołączono do pokoju ${roomId}`);
         this.router.navigate(['/game'], { queryParams: { roomId } });
       } else {
         alert('Nie udało się dołączyć do pokoju. Może jest już pełny?');

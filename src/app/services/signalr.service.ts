@@ -1,4 +1,3 @@
-// src/app/signalr.service.ts
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { BehaviorSubject } from 'rxjs';
@@ -13,7 +12,6 @@ export class SignalRService {
     board: string[][];
     currentTurn: string;
     isGameOver: boolean;
-    message: string;
   } | null>(null);
   public gameState$ = this.gameStateSource.asObservable();
 
@@ -24,16 +22,17 @@ export class SignalRService {
       this.hubConnection &&
       this.hubConnection.state === signalR.HubConnectionState.Connected
     ) {
-      console.log('Połączenie SignalR już istnieje.');
       return;
     }
-
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://tictactoe-server-0sgo.onrender.com/ticTacToeHub')
+      .withUrl('http://localhost:5225/ticTacToeHub')
       .build();
+
+    // this.hubConnection = new signalR.HubConnectionBuilder()
+    //   .withUrl('https://tictactoe-server-0sgo.onrender.com/ticTacToeHub')
+    //   .build();
     this.registerOnServerEvents();
     await this.hubConnection.start();
-    console.log('Połączenie SignalR zostało ustanowione.');
   }
 
   public getRooms(): Promise<string[]> {
@@ -94,11 +93,6 @@ export class SignalRService {
           board,
           currentTurn,
           isGameOver,
-          message: isGameOver
-            ? winner
-              ? `Gra zakończona! Zwycięzca: ${winner}`
-              : 'Gra zakończona remisem!'
-            : '',
         });
       }
     );
@@ -108,7 +102,8 @@ export class SignalRService {
     currentTurn: string;
     isGameOver: boolean;
     winner: string;
-    message: string;
+    playerXName: string;
+    playerOName: string;
   }> {
     return this.hubConnection!.invoke('GetGameState', roomId);
   }
@@ -130,7 +125,6 @@ export class SignalRService {
     callback: (rooms: { roomId: string; playerCount: number }[]) => void
   ): void {
     this.hubConnection!.on('RoomsUpdated', (rooms) => {
-      console.log('Rooms updated:', rooms);
       callback(rooms);
     });
   }

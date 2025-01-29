@@ -25,7 +25,6 @@ export class RoomBarComponent {
         this.playerName
       );
       if (result) {
-        console.log(`Dołączono do pokoju ${roomId}`);
         this.router.navigate(['/game'], { queryParams: { roomId } });
       } else {
         alert('Nie udało się dołączyć do pokoju. Może jest już pełny?');

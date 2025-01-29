@@ -1,4 +1,3 @@
-// src/app/game/game.component.ts
 import { Component, OnInit, signal } from '@angular/core';
 import { SignalRService } from '../../services/signalr.service';
 import { NgFor, NgIf } from '@angular/common';
@@ -9,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
-  imports: [NgIf, NgFor, FormsModule],
+  imports: [NgFor, FormsModule],
 })
 export class GameComponent implements OnInit {
   playerName: string = '';
@@ -23,7 +22,6 @@ export class GameComponent implements OnInit {
   ];
   currentTurn: string = 'X';
   isGameOver: boolean = false;
-  message: string = '';
   winner: string = '';
   constructor(
     private signalRService: SignalRService,
@@ -48,7 +46,6 @@ export class GameComponent implements OnInit {
 
         await this.signalRService.startConnection();
 
-        // Wywołaj JoinRoom, aby zsynchronizować stan gry
         const joined = await this.signalRService.joinRoom(
           this.selectedRoomId,
           this.playerName
@@ -59,26 +56,19 @@ export class GameComponent implements OnInit {
           return;
         }
 
-        console.log('SignalR connection started.');
-
-        // Rejestruj eventy SignalR
         this.signalRService.onBoardUpdated((board, currentTurn) => {
           this.board = board;
           this.currentTurn = currentTurn;
         });
 
-        this.signalRService.onPlayerJoined((playerName) => {
-          this.message = `Do pokoju dołączył: ${playerName}`;
-        });
+        this.signalRService.onPlayerJoined((playerName) => {});
 
         this.signalRService.onGameRestarted((board, currentTurn) => {
           this.board = board;
           this.currentTurn = currentTurn;
           this.isGameOver = false;
-          this.message = 'Gra została zrestartowana!';
         });
 
-        // Synchronizuj stan gry
         const gameState = await this.signalRService.getGameState(
           this.selectedRoomId
         );
@@ -86,11 +76,6 @@ export class GameComponent implements OnInit {
           this.board = gameState.board;
           this.currentTurn = gameState.currentTurn;
           this.isGameOver = gameState.isGameOver;
-          this.message = this.isGameOver
-            ? gameState.winner
-              ? `Gra zakończona! Zwycięzca: ${gameState.winner}`
-              : 'Gra zakończona remisem!'
-            : '';
         }
 
         this.signalRService.onGameOver((winner: string) => {
@@ -100,7 +85,6 @@ export class GameComponent implements OnInit {
       });
     } catch (err) {
       console.error('Błąd połączenia z hubem: ', err);
-      this.message = 'Wystąpił błąd podczas łączenia.';
     }
   }
 
@@ -108,14 +92,12 @@ export class GameComponent implements OnInit {
     try {
       if (this.selectedRoomId) {
         await this.signalRService.restartGame(this.selectedRoomId);
-        console.log('Gra została zrestartowana.');
       }
     } catch (err) {
       console.error('Błąd podczas restartowania gry:', err);
     }
   }
 
-  // Kliknięcie na polu
   async makeMove(row: number, col: number) {
     if (!this.selectedRoomId || this.isGameOver) {
       return;

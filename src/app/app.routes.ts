@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import {HomeComponent} from "./pages/home/home.component";
-import {AuthGuard} from "./auth.guard";
-import {RoomsListComponent} from "./pages/rooms-list/rooms-list.component";
+import { HomeComponent } from './pages/home/home.component';
+import { AuthGuard } from './auth.guard';
+import { RoomsListComponent } from './pages/rooms-list/rooms-list.component';
 
 export const routes: Routes = [
   {
@@ -12,20 +12,16 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () =>
-      import('./pages/login/login.component').then(
-        (c) => c.LoginComponent
-      ),
+      import('./pages/login/login.component').then((c) => c.LoginComponent),
   },
   {
     path: '',
-    canActivate: [AuthGuard], // Zastosowanie AuthGuard do grupy
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'home',
         loadComponent: () =>
-          import('./pages/home/home.component').then(
-            (c) => c.HomeComponent
-          ),
+          import('./pages/home/home.component').then((c) => c.HomeComponent),
       },
       {
         path: 'rooms',
@@ -38,9 +34,7 @@ export const routes: Routes = [
       {
         path: 'game',
         loadComponent: () =>
-          import('./pages/game/game.component').then(
-            (c) => c.GameComponent
-          ),
+          import('./pages/game/game.component').then((c) => c.GameComponent),
       },
     ],
   },
