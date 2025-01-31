@@ -1,27 +1,14 @@
-# TicTacToeClient
+# TicTacToe Online Game
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
+## Desktop View
+<img width="1440" alt="Zrzut ekranu 2025-01-31 o 02 35 35" src="https://github.com/user-attachments/assets/57f61490-2416-4ada-97ff-6b551e9d9f24" />
+<img width="1439" alt="Zrzut ekranu 2025-01-31 o 02 36 00" src="https://github.com/user-attachments/assets/2758ce52-ac24-419c-9fde-64e821eb0561" />
+<img width="1438" alt="Zrzut ekranu 2025-01-31 o 02 37 21" src="https://github.com/user-attachments/assets/2df41cc4-e911-4b58-892f-cffe35265eff" />
+<img width="1439" alt="Zrzut ekranu 2025-01-31 o 02 36 42" src="https://github.com/user-attachments/assets/bee9eadf-ab1f-4162-a6f2-2cf0a3779252" />
 
-## Development server
+## Mobile View
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![MobileView](https://github.com/user-attachments/assets/fff79e13-db95-4042-b443-4464c4dfc6d4)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Play the game here: https://tictactoeclient.vercel.app/
